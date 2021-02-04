@@ -44,4 +44,6 @@ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch -r gc
 
 修改历史客观记录了我对原版的修改
 
-[fk3.2版的修改历史](https://github.com/wangliang1989/oh-my-fk/commits/master/fk)
+[在 GitHub 查看 fk3.2 版的修改历史](https://github.com/wangliang1989/oh-my-fk/commits/master/fk)
+
+[在 gitee 查看 fk3.2 版的修改历史](https://gitee.com/wangliang1989/oh-my-fk/commits/master/fk)
