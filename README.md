@@ -2,19 +2,32 @@
 
 本项目提供 FK 的容易安装版本。
 
-官方原版 FK 存在一些问题，如 makefile 文件使用的是所谓的 f77 编译器。
-我其实不能理解为什么会是 f77 编译器，可能是朱露培用的是非常旧的电脑，也可能是他用的软链接。
-这里提供的 FK 版本就会修正这一类问题。
-
 本项目会收集官方的不同版本版本的 FK。
 用户选择使用哪一个版本只需要进入相应的子路径进行编译（**子路径 [fk](fk/) 是 fk3.2 版本**），
-并把相应路径加入环境变量即可：
+并把相应路径加入环境变量即可，类似这样：
 
 ````bash
 cd fk
 make
-# 添加环境变量：export PATH=to-the-path:$PATH
+# 添加环境变量：export PATH=/to-the-path/:$PATH
 ````
+
+## Mac 用户
+
+Mac 用户在编译的时候，可能收到类似的报错：
+
+````bash
+clang: error: invalid version number in 'MACOSX_DEPLOYMENT_TARGET=11.0'
+````
+
+原因是Xcode的命令行工具没有更新：
+
+````bash
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+````
+
+## 项目的创立
 
 本项目创立时是继承的 Oh-My-CAP 内的 FK（现在，Oh-My-CAP 项目已经不再包含 FK 了）。
 也就是，我把 Oh-My-CAP 内的 FK 独立了出来，搬到了这里。原因是 CAP 用户是 FK 用户的子集。
