@@ -1,14 +1,15 @@
+FC=gfortran
 optimize=-O
-FFLAGS=$(optimize) -ffpe-trap=overflow,invalid,denormal
+FFLAGS=$(optimize) -ffpe-trap=overflow,invalid,denormal -ffixed-line-length-none
 CFLAGS=$(optimize)
 #if SAC library has been installed, uncomment the next two lines
-#CFLAGS=$(optimize) -DSAC_LIB
-#SACLIB=-L$(SACHOME)/lib -lsac -lsacio
+CFLAGS=$(optimize) -DSAC_LIB
+SACLIB=-L$(SACHOME)/lib -lsac -lsacio
 #
 
 SUBS = fft.o Complex.o sacio.o
 FKSUBS = fk.o kernel.o prop.o source.o bessel.o $(SUBS)
-TARGETS = fk syn st_fk trav sachd
+TARGETS = fk syn st_fk trav sachd fk2mt
 
 all: $(TARGETS)
 
@@ -26,6 +27,9 @@ sachd: sachd.o sacio.o
 
 trav: trav.o tau_p.o
 	$(LINK.f) -o $@ trav.o tau_p.o -lm
+
+fk2mt: fk2mt.o sacio.o radiats.o
+	$(LINK.f) -o $@ $^ -lm
 
 bessel.f: bessel.FF
 	cpp -traditional-cpp $< > $@
