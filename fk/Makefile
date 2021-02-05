@@ -7,7 +7,7 @@ SACLIB=-L$(SACHOME)/lib -lsac -lsacio
 SUBS = fft.o Complex.o sacio.o
 FKSUBS = fk.o kernel.o prop.o source.o bessel.o $(SUBS)
 
-all: fk syn st_fk trav sachd
+all: fk syn st_fk trav sachd clean
 
 syn: syn.o ${SUBS} radiats.o futterman.o
 	$(CC) -o $@ $^ ${SACLIB} -lm

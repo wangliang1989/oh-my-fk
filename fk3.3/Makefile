@@ -9,7 +9,7 @@ SACLIB=-L$(SACHOME)/lib -lsac -lsacio
 
 SUBS = fft.o Complex.o sacio.o
 FKSUBS = fk.o kernel.o prop.o source.o bessel.o $(SUBS)
-TARGETS = fk syn st_fk trav sachd fk2mt
+TARGETS = fk syn st_fk trav sachd fk2mt clean
 
 all: $(TARGETS)
 
